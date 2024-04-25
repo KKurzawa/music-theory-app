@@ -5,6 +5,7 @@ import Home from './Pages/Home/Home.jsx'
 import Error from './Pages/Error/Error.jsx'
 import FunctionalHarmony from './Pages/FunctionalHarmony/FunctionalHarmony.jsx'
 import ModesInParallel from './Pages/ModesInParellel/ModesInParallel.jsx'
+import ChordProgressions from './Pages/ChordProgressions/ChordProgressions.jsx'
 import './index.css'
 
 const router = createBrowserRouter([
@@ -18,8 +19,12 @@ const router = createBrowserRouter([
         element: <Home />
       },
       {
-        path: '/functionalHarmony',
+        path: '/FunctionalHarmony',
         element: <FunctionalHarmony />
+      },
+      {
+        path: '/ChordProgressions',
+        element: <ChordProgressions />
       },
       {
         path: '/ModesInParallel',
