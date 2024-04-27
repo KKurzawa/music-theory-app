@@ -1,27 +1,24 @@
 import './FunctionalHarmonySelecter.css'
-import { numberOfSharpsFlats } from '../../Utils/ScaleshordsArray'
+import { sharpsOrFlats, numberOfSharpsOrFlats } from '../../Utils/NumberOfSharpsOrFlatsArray'
+import Select from 'react-select'
 
-const FunctionalHarmonySelecter = ({ props: { sharpsFlats, setSharpsFlats, number, setNumber, majorScale, minorScale, handleSharpFlatChange, handleNumberChange, numberOfSharpsFlats } }) => {
+const FunctionalHarmonySelecter = ({ props: { sharpsFlats, setSharpsFlats, number, setNumber } }) => {
+
     return (
-        <main className='flex flex-col items-center w-full'>
-            <article className='flex flex-row justify-evenly w-full'>
-                <section className='flex flex-col'>
-                    <header>Choose Sharps or Flats</header>
-                    <select value={sharpsFlats} onChange={handleSharpFlatChange}>
-                        <option value={'Sharps'}>Sharps</option>
-                        <option value={'Flats'}>Flats</option>
-                    </select>
-                </section>
-                <section className='flex flex-col'>
-                    <header>Choose the number of Sharps or Flats.</header>
-                    <select onChange={handleNumberChange} name={number} value={number}>
-                        {numberOfSharpsFlats.map((item, index) => (
-                            <option key={index} value={item}
-                                className='text-start'>{item}</option>
-                        ))}
-                    </select>
-                </section>
-            </article>
+        <main className='flex justify-evenly w-full'>
+            <Select
+                placeholder={'Sharps or Flats'}
+                classNamePrefix="Select Sharps or Flats"
+                options={sharpsOrFlats}
+                onChange={(sharpsFlats) => setSharpsFlats(Object.values(sharpsFlats.value).join(''))}
+                value={sharpsFlats}
+                name={sharpsFlats} />
+            <Select
+                placeholder={'Number of Sharps or Flats'}
+                options={numberOfSharpsOrFlats}
+                onChange={(number) => setNumber(Object.values(number.value).join(''))}
+                value={number}
+                name={number} />
         </main>
     )
 }

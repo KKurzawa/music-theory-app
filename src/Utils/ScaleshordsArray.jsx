@@ -14,7 +14,16 @@ const gbMajor = ['Gb', 'Ab', 'Bb', 'Cb', 'Db', 'Eb', 'F']
 const cSharpMajor = ['C#', 'D#', 'E#', 'F#', 'G#', 'A#', 'B#']
 const cbMajor = ['Cb', 'Db', 'Eb', 'Fb', 'Gb', 'Ab', 'Bb']
 
-const numberOfSharpsFlats = ['0', '1', '2', '3', '4', '5', '6', '7']
+const numberOfSharpsOrFlats = [
+    { value: '0', label: '0' },
+    { value: '1', label: '1' },
+    { value: '2', label: '2' },
+    { value: '3', label: '3' },
+    { value: '4', label: '4' },
+    { value: '5', label: '5' },
+    { value: '6', label: '6' },
+    { value: '7', label: '7' },
+]
 
 const majorModes = ['Ionian', 'Dorian', 'Phrygian', 'Lydian', 'Mixolydian', 'Aeolian', 'Locrian']
 const minorModes = majorModes.slice(5, 7).concat(majorModes.slice(0, 5))
@@ -41,7 +50,7 @@ export {
     gbMajor,
     cSharpMajor,
     cbMajor,
-    numberOfSharpsFlats,
+    numberOfSharpsOrFlats,
     majorModes,
     minorModes,
     majorRomanNumerals,

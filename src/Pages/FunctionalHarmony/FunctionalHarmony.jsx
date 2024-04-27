@@ -18,7 +18,7 @@ import {
     gbMajor,
     cSharpMajor,
     cbMajor,
-    numberOfSharpsFlats,
+    numberOfSharpsOrFlats,
     majorModes,
     minorModes,
     majorRomanNumerals,
@@ -28,7 +28,7 @@ import {
 } from '../../Utils/ScaleshordsArray'
 
 const FunctionalHarmony = () => {
-    const [sharpsFlats, setSharpsFlats] = useState('Sharps')
+    const [sharpsFlats, setSharpsFlats] = useState('sharps')
     const [number, setNumber] = useState('0')
 
     function getMinor(key) {
@@ -42,46 +42,46 @@ const FunctionalHarmony = () => {
         if (number === '0') {
             majorScale = cMajor;
             getMinor(cMajor)
-        } else if (number === '1' && sharpsFlats === 'Sharps') {
+        } else if (number === '1' && sharpsFlats === 'sharps') {
             majorScale = gMajor;
             getMinor(gMajor)
-        } else if (number === '1' && sharpsFlats === 'Flats') {
+        } else if (number === '1' && sharpsFlats === 'flats') {
             majorScale = fMajor;
             getMinor(fMajor)
-        } else if (number === '2' && sharpsFlats === 'Sharps') {
+        } else if (number === '2' && sharpsFlats === 'sharps') {
             majorScale = dMajor;
             getMinor(dMajor)
-        } else if (number === '2' && sharpsFlats === 'Flats') {
+        } else if (number === '2' && sharpsFlats === 'flats') {
             majorScale = bbMajor;
             getMinor(bbMajor)
-        } else if (number === '3' && sharpsFlats === 'Sharps') {
+        } else if (number === '3' && sharpsFlats === 'sharps') {
             majorScale = aMajor;
             getMinor(aMajor)
-        } else if (number === '3' && sharpsFlats === 'Flats') {
+        } else if (number === '3' && sharpsFlats === 'flats') {
             majorScale = ebMajor;
             getMinor(ebMajor)
-        } else if (number === '4' && sharpsFlats === 'Sharps') {
+        } else if (number === '4' && sharpsFlats === 'sharps') {
             majorScale = eMajor;
             getMinor(eMajor)
-        } else if (number === '4' && sharpsFlats === 'Flats') {
+        } else if (number === '4' && sharpsFlats === 'flats') {
             majorScale = abMajor;
             getMinor(abMajor)
-        } else if (number === '5' && sharpsFlats === 'Sharps') {
+        } else if (number === '5' && sharpsFlats === 'sharps') {
             majorScale = bMajor;
             getMinor(bMajor)
-        } else if (number === '5' && sharpsFlats === 'Flats') {
+        } else if (number === '5' && sharpsFlats === 'flats') {
             majorScale = dbMajor;
             getMinor(dbMajor)
-        } else if (number === '6' && sharpsFlats === 'Sharps') {
+        } else if (number === '6' && sharpsFlats === 'sharps') {
             majorScale = fSharpMajor;
             getMinor(fSharpMajor)
-        } else if (number === '6' && sharpsFlats === 'Flats') {
+        } else if (number === '6' && sharpsFlats === 'flats') {
             majorScale = gbMajor;
             getMinor(gbMajor)
-        } else if (number === '7' && sharpsFlats === 'Sharps') {
+        } else if (number === '7' && sharpsFlats === 'sharps') {
             majorScale = cSharpMajor;
             getMinor(cSharpMajor)
-        } else if (number === '7' && sharpsFlats === 'Flats') {
+        } else if (number === '7' && sharpsFlats === 'flats') {
             majorScale = cbMajor;
             getMinor(cbMajor)
         }
@@ -89,17 +89,9 @@ const FunctionalHarmony = () => {
 
     keysInDropdown()
 
-    // handles on change events
-    const handleSharpFlatChange = (e) => {
-        setSharpsFlats(e.target.value)
-    }
-
-    const handleNumberChange = (e) => {
-        setNumber(e.target.value)
-    }
     return (
         <>
-            <FunctionalHarmonySelecter props={{ sharpsFlats, setSharpsFlats, number, setNumber, majorScale, minorScale, handleSharpFlatChange, handleNumberChange, numberOfSharpsFlats }} />
+            <FunctionalHarmonySelecter props={{ sharpsFlats, setSharpsFlats, number, setNumber, majorScale, minorScale, numberOfSharpsOrFlats }} />
             <FunctionalHarmonyDisplay props={{ majorScale, minorScale, majorModes, majorRomanNumerals, majorChords, minorChords, minorRomanNumerals, minorModes }} />
         </>
     )
