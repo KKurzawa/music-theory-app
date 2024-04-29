@@ -1,13 +1,44 @@
 import './ModeSelector.css'
 import Select from 'react-select'
+import {
+    cIonian,
+    cLydian,
+    cMixolydian,
+    cMelodicMinor,
+    cHarmonicMinor,
+    cDorian,
+    cAeolian,
+    cPhrygian,
+    cLocrian,
+    cHarmonicDominant,
+    cLydianDominant,
+    cLocrianTwo,
+    cAltered,
+    cWholeTone,
+    cHalfWholeDiminished,
+    modeOptions
+} from '../../Utils/ModesArray'
 
-const ModeSelector = ({ props: { root, setRoot, modeOne, setModeOne, modeTwo, setModeTwo } }) => {
+const ModeSelector = ({ props: { modeOne, setModeOne, modeTwo, setModeTwo } }) => {
     return (
-        <>
+        <main className='flex justify-evenly'>
             <Select
+                placeholder={'Sharps or Flats'}
+                classNamePrefix="Mode 1"
+                options={modeOptions}
+                onChange={(modeOne) => setModeOne(Object.values(modeOne.value).join(''))}
+                value={modeOne}
+                name={modeOne}
             />
-
-        </>
+            <Select
+                placeholder={'Sharps or Flats'}
+                classNamePrefix="Mode 2"
+                options={modeOptions}
+                onChange={(modeTwo) => setModeTwo(Object.values(modeTwo.value).join(''))}
+                value={modeTwo}
+                name={modeTwo}
+            />
+        </main>
     )
 }
 
