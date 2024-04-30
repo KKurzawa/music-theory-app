@@ -1,13 +1,14 @@
 import './ModesInParellelDisplay.css'
 
-const ModesInParellelDisplay = ({ props: { modeOne, modeTwo, modeOneToMap, modeTwoToMap, modeOneChordTonesToMap, modeTwoChordTonesToMap, seventhChordOne, seventhChordTwo, seventhChordOneTones, seventhChordTwoTones, chordOneName, chordTwoName, extensionsOne, extensionsTwo, extensionChordOne, extensionChordTwo } }) => {
+const ModesInParellelDisplay = ({ props: { modeOne, modeTwo, modeOneToMap, modeTwoToMap, modeOneChordTonesToMap, modeTwoChordTonesToMap, seventhChordOne, seventhChordTwo, seventhChordOneTones, seventhChordTwoTones, chordOneName, chordTwoName, extensionsOne, extensionsTwo, extensionChordOne, extensionChordTwo, extensionNumberOne, extensionNumberTwo } }) => {
 
     return (
         <>
             <main className='flex justify-evenly'>
                 {/* mode one */}
                 <article className='flex flex-col items-center'>
-                    <header>{modeOne}</header>
+                    <header>C {modeOne}</header>
+                    <header>Scale</header>
                     <ul className='flex fle-row items-center'>
                         {modeOneToMap.map((note, index) => (
                             <li key={index} className='px-1'>{note}</li>
@@ -36,11 +37,17 @@ const ModesInParellelDisplay = ({ props: { modeOne, modeTwo, modeOneToMap, modeT
                             <li key={index} className='px-1'>{tone}</li>
                         ))}
                     </ul>
+                    <ul className='flex flex-row items-center'>
+                        {extensionNumberOne.map((tone, index) => (
+                            <li key={index} className='px-1'>{tone}</li>
+                        ))}
+                    </ul>
                     <header>Extensions Chord: {extensionChordOne}</header>
                 </article>
                 {/* mode two */}
                 <article className='flex flex-col items-center'>
-                    <header>{modeTwo}</header>
+                    <header>C {modeTwo}</header>
+                    <header>Scale</header>
                     <ul className='flex fle-row items-center'>
                         {modeTwoToMap.map((note, index) => (
                             <li key={index} className='px-1'>{note}</li>
@@ -66,6 +73,11 @@ const ModesInParellelDisplay = ({ props: { modeOne, modeTwo, modeOneToMap, modeT
                     <header>Extensions</header>
                     <ul className='flex flex-row items-center'>
                         {extensionsTwo.map((tone, index) => (
+                            <li key={index} className='px-1'>{tone}</li>
+                        ))}
+                    </ul>
+                    <ul className='flex flex-row items-center'>
+                        {extensionNumberTwo.map((tone, index) => (
                             <li key={index} className='px-1'>{tone}</li>
                         ))}
                     </ul>

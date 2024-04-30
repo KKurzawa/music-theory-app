@@ -33,6 +33,13 @@ import {
     wholeToneChordTones,
     cHalfWholeDiminished,
     halfWholeDiminishedChordTones,
+    ionianExtensionNumber,
+    phrygianExtensionNumber,
+    lydianExtensionNumber,
+    aeolianExtensionNumber,
+    alteredExtensionNumber,
+    wholeToneExtensionNumber,
+    halfWholeDiminishedExtensionNumber,
 } from '../../Utils/ModesArray'
 
 const ModesInParallel = () => {
@@ -162,10 +169,17 @@ const ModesInParallel = () => {
     let extensionChordOne = 'Dm'
     let extensionChordTwo = 'Dm'
 
+    let extensionNumberOne = ionianExtensionNumber
+    let extensionNumberTwo = ionianExtensionNumber
+
     function getSeventhChordOne() {
         seventhChordOne = []
         if (modeOne === 'Whole Tone') {
             seventhChordOne = ['C', 'E', 'Ab', 'Bb']
+        } else if (modeOne === 'Altered') {
+            seventhChordOne = ['C', 'E', 'Bb']
+        } else if (modeOne === 'Half Whole Diminished') {
+            seventhChordOne = ['C', 'E', 'G', 'Bb']
         } else {
             for (let i = 0; i < modeOneToMap.length; i++) {
                 if (i % 2 === 0) {
@@ -178,7 +192,11 @@ const ModesInParallel = () => {
     function getExtensionsOne() {
         extensionsOne = []
         if (modeOne === 'Whole Tone') {
-            extensionsOne = ['D', 'Bb']
+            extensionsOne = ['D', 'Gb']
+        } else if (modeOne === 'Altered') {
+            extensionsOne = ['Db', 'Eb', 'Gb', 'Ab']
+        } else if (modeOne === 'Half Whole Diminished') {
+            extensionsOne = ['Db', 'Eb', 'F#', 'A']
         } else {
             for (let i = 0; i < modeOneToMap.length; i++) {
                 if (i % 2 !== 0) {
@@ -188,10 +206,24 @@ const ModesInParallel = () => {
         }
     }
 
+    function getExtensionNumbersOne() {
+        modeOne === 'Phrygian' || modeOne === 'Locrian' || modeOne === 'Harmonic Dominant' ? extensionNumberOne = phrygianExtensionNumber :
+            modeOne === 'Aeolian' || modeOne === 'Harmonic Minor' || modeOne === 'Locrian Two' ? extensionNumberOne = aeolianExtensionNumber :
+                modeOne === 'Whole Tone' ? extensionNumberOne = wholeToneExtensionNumber :
+                    modeOne === 'Half Whole Diminished' ? extensionNumberOne = halfWholeDiminishedExtensionNumber :
+                        modeOne === 'Altered' ? extensionNumberOne = alteredExtensionNumber :
+                            modeOne === 'Lydian' || modeOne === 'Lydian Dominant' ? extensionNumberOne = lydianExtensionNumber :
+                                extensionNumberOne = ionianExtensionNumber
+    }
+
     function getSeventhChordTwo() {
         seventhChordTwo = []
         if (modeTwo === 'Whole Tone') {
             seventhChordTwo = ['C', 'E', 'Ab', 'Bb']
+        } else if (modeTwo === 'Altered') {
+            seventhChordTwo = ['C', 'E', 'Bb']
+        } else if (modeOne === 'Half Whole Diminished') {
+            seventhChordTwo = ['C', 'E', 'G', 'Bb']
         } else {
             for (let i = 0; i < modeTwoToMap.length; i++) {
                 if (i % 2 === 0) {
@@ -204,7 +236,11 @@ const ModesInParallel = () => {
     function getExtensionsTwo() {
         extensionsTwo = []
         if (modeTwo === 'Whole Tone') {
-            extensionsTwo = ['D', 'Bb']
+            extensionsTwo = ['D', 'Gb']
+        } else if (modeTwo === 'Altered') {
+            extensionsTwo = ['Db', 'Eb', 'Gb', 'Ab']
+        } else if (modeTwo === 'Half Whole Diminished') {
+            extensionsTwo = ['Db', 'Eb', 'F#', 'A']
         } else {
             for (let i = 0; i < modeTwoToMap.length; i++) {
                 if (i % 2 !== 0) {
@@ -214,34 +250,45 @@ const ModesInParallel = () => {
         }
     }
 
+    function getExtensionNumbersTwo() {
+        modeTwo === 'Phrygian' || modeTwo === 'Locrian' || modeTwo === 'Harmonic Dominant' ? extensionNumberTwo = phrygianExtensionNumber :
+            modeTwo === 'Aeolian' || modeTwo === 'Harmonic Minor' || modeTwo === 'Locrian Two' ? extensionNumberTwo = aeolianExtensionNumber :
+                modeTwo === 'Whole Tone' ? extensionNumberTwo = wholeToneExtensionNumber :
+                    modeTwo === 'Half Whole Diminished' ? extensionNumberTwo = halfWholeDiminishedExtensionNumber :
+                        modeTwo === 'Altered' ? extensionNumberTwo = alteredExtensionNumber :
+                            modeTwo === 'Lydian' || modeTwo === 'Lydian Dominant' ? extensionNumberTwo = lydianExtensionNumber :
+                                extensionNumberTwo = ionianExtensionNumber
+    }
+
     getSeventhChordOne()
     getExtensionsOne()
     getSeventhChordTwo()
     getExtensionsTwo()
-
+    getExtensionNumbersOne()
+    getExtensionNumbersTwo()
 
     function getChordOneName() {
         modeOne === 'Dorian' || modeOne === 'Phrygian' || modeOne === 'Aeolian' ? chordOneName = 'm7' :
             modeOne === 'Harmonic Minor' || modeOne === 'Melodic Minor' ? chordOneName = 'm(maj7)' :
                 modeOne === 'Ionian' ? chordOneName = 'Maj7' :
                     modeOne === 'Lydian' ? chordOneName = 'Maj7#11' :
-                        modeOne === 'Mixolydian' ? chordOneName = '7' :
+                        modeOne === 'Mixolydian' || modeOne === 'Half Whole Diminished' ? chordOneName = '7' :
                             modeOne === 'Lydian Dominant' ? chordOneName = '7#11' :
                                 modeOne === 'Harmonic Dominant' ? chordOneName = '7(b9b13)' :
                                     modeOne === 'Altered' ? chordOneName = '7alt' :
                                         modeOne === 'Whole Tone' ? chordOneName = '7#5' :
-                                            modeOne === 'Half Whole Diminished' ? chordOneName = 'dim7' :
-                                                chordOneName = 'm7b5'
+                                            chordOneName = 'm7b5'
     }
 
     function getExtensionChordNameOne() {
         modeOne === 'Whole Tone' ? extensionChordOne = 'Not a chord' :
-            modeOne === 'Lydian Dominant' || modeOne === 'Lydian' ? extensionChordOne = 'D' :
-                modeOne === 'Half Whole Diminished' ? extensionChordOne = 'Dbdim7' :
-                    modeOne === 'Phrygian' || modeOne === 'Locrian' || modeOne === 'Harmonic Dominant' ? extensionChordOne = 'Db' :
-                        modeOne === 'Half Whole Diminished' ? extensionChordOne = 'D' :
-                            modeOne === 'Aeolian' || modeOne === 'Harmonic Minor' || modeOne === 'Locrian Two' ? extensionChordOne = 'Ddim' :
-                                extensionChordOne = 'Dm'
+            modeOne === 'Altered' ? extensionChordOne = 'Db9(sus4)' :
+                modeOne === 'Lydian Dominant' || modeOne === 'Lydian' ? extensionChordOne = 'D' :
+                    modeOne === 'Half Whole Diminished' ? extensionChordOne = 'Db9#5(sus4)' :
+                        modeOne === 'Phrygian' || modeOne === 'Locrian' || modeOne === 'Harmonic Dominant' ? extensionChordOne = 'Db' :
+                            modeOne === 'Half Whole Diminished' ? extensionChordOne = 'D' :
+                                modeOne === 'Aeolian' || modeOne === 'Harmonic Minor' || modeOne === 'Locrian Two' ? extensionChordOne = 'Ddim' :
+                                    extensionChordOne = 'Dm'
 
     }
 
@@ -250,23 +297,23 @@ const ModesInParallel = () => {
             modeTwo === 'Harmonic Minor' || modeTwo === 'Melodic Minor' ? chordTwoName = 'm(maj7)' :
                 modeTwo === 'Ionian' ? chordTwoName = 'Maj7' :
                     modeTwo === 'Lydian' ? chordTwoName = 'Maj7#11' :
-                        modeTwo === 'Mixolydian' ? chordTwoName = '7' :
+                        modeTwo === 'Mixolydian' || modeTwo === 'Half Whole Diminished' ? chordTwoName = '7' :
                             modeTwo === 'Lydian Dominant' ? chordTwoName = '7#11' :
                                 modeTwo === 'Harmonic Dominant' ? chordTwoName = '7(b9b13)' :
                                     modeTwo === 'Altered' ? chordTwoName = '7alt' :
                                         modeTwo === 'Whole Tone' ? chordTwoName = '7#5' :
-                                            modeTwo === 'Half Whole Diminished' ? chordTwoName = 'dim7' :
-                                                chordTwoName = 'm7b5'
+                                            chordTwoName = 'm7b5'
     }
 
     function getExtensionChordNameTwo() {
         modeTwo === 'Whole Tone' ? extensionChordTwo = 'Not a chord' :
-            modeTwo === 'Lydian Dominant' || modeTwo === 'Lydian' ? extensionChordTwo = 'D' :
-                modeTwo === 'Half Whole Diminished' ? extensionChordTwo = 'Dbdim7' :
-                    modeTwo === 'Phrygian' || modeTwo === 'Locrian' || modeTwo === 'Harmonic Dominant' ? extensionChordTwo = 'Db' :
-                        modeTwo === 'Half Whole Diminished' ? extensionChordTwo = 'D' :
-                            modeTwo === 'Aeolian' || modeTwo === 'Harmonic Minor' || modeTwo === 'Locrian Two' ? extensionChordTwo = 'Ddim' :
-                                extensionChordTwo = 'Dm'
+            modeTwo === 'Altered' ? extensionChordTwo = 'Db9(sus4)' :
+                modeTwo === 'Lydian Dominant' || modeTwo === 'Lydian' ? extensionChordTwo = 'D' :
+                    modeTwo === 'Half Whole Diminished' ? extensionChordTwo = 'Db9#5(sus4)' :
+                        modeTwo === 'Phrygian' || modeTwo === 'Locrian' || modeTwo === 'Harmonic Dominant' ? extensionChordTwo = 'Db' :
+                            modeTwo === 'Half Whole Diminished' ? extensionChordTwo = 'D' :
+                                modeTwo === 'Aeolian' || modeTwo === 'Harmonic Minor' || modeTwo === 'Locrian Two' ? extensionChordTwo = 'Ddim' :
+                                    extensionChordTwo = 'Dm'
 
     }
 
@@ -295,7 +342,7 @@ const ModesInParallel = () => {
     return (
         <main>
             <ModeSelector props={{ modeOne, setModeOne, modeTwo, setModeTwo }} />
-            <ModesInParellelDisplay props={{ modeOne, modeTwo, modeOneToMap, modeTwoToMap, modeOneChordTonesToMap, modeTwoChordTonesToMap, seventhChordOne, seventhChordTwo, seventhChordOneTones, seventhChordTwoTones, chordOneName, chordTwoName, extensionsOne, extensionsTwo, extensionChordOne, extensionChordTwo }} />
+            <ModesInParellelDisplay props={{ modeOne, modeTwo, modeOneToMap, modeTwoToMap, modeOneChordTonesToMap, modeTwoChordTonesToMap, seventhChordOne, seventhChordTwo, seventhChordOneTones, seventhChordTwoTones, chordOneName, chordTwoName, extensionsOne, extensionsTwo, extensionChordOne, extensionChordTwo, extensionNumberOne, extensionNumberTwo }} />
         </main>
 
     )

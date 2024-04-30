@@ -1,6 +1,18 @@
 const cIonian = ['C', 'D', 'E', 'F', 'G', 'A', 'B']
 const ionianChordTones = ['1', '2', '3', '4', '5', '6', '7']
 
+// variables to get extension numbers
+const ionianExtensionNumber = ['9', '11', '13']
+const phrygianExtensionNumber = ionianExtensionNumber.map(number => number === '9' ? 'b9' :
+    number === '13' ? 'b13' : number)
+const lydianExtensionNumber = ionianExtensionNumber.map(number => number === '11' ? '#11' : number)
+const aeolianExtensionNumber = ionianExtensionNumber.map(number => number === '13' ? 'b13' : number)
+const alteredExtensionNumber = ['b9', '#9', 'b5', '#5']
+const wholeToneExtensionNumber = lydianExtensionNumber.slice(0, 2)
+const halfWholeDiminishedExtensionNumber = alteredExtensionNumber.slice(0, 2).concat(lydianExtensionNumber.slice(1, 3))
+
+
+// variables to get modes and scale degree number 
 const cLydian = cIonian.map(note => note === 'F' ? 'F#' : note)
 const lydianChordTones = ionianChordTones.map(tone => tone === '4' ? '#4' : tone)
 
@@ -35,14 +47,15 @@ const cLocrianTwo = cLocrian.map(note => note === 'Db' ? 'D' : note)
 const locrianTwoChordTones = locrianChordTones.map(tone => tone === 'b2' ? '2' : tone)
 
 const cAltered = cLocrian.map(note => note === 'F' ? 'E' : note)
-const alteredChordTones = locrianChordTones.map(tone => tone === 'b3' ? '#2' : tone === '11' ? '3' : tone === 'b13' ? '#5' : tone)
+const alteredChordTones = locrianChordTones.map(tone => tone === 'b3' ? '#2' : tone === '4' ? '3' : tone === 'b6' ? '#5' : tone)
 
 const cWholeTone = cIonian.slice(0, 3).concat(cAltered.slice(4, 7))
 const wholeToneChordTones = ionianChordTones.slice(0, 3).concat(alteredChordTones.slice(4, 7))
 
 const cHalfWholeDiminished = cAltered.slice(0, 4).concat(cLydianDominant.slice(3, 7))
-const halfWholeDiminishedChordTones = alteredChordTones.slice(0, 4).concat(lydianDominantChordTones.slice(3, 7))
+const halfWholeDiminishedChordTones = mixolydianChordTones
 
+// object for dropdown
 const modeOptions = [
     { value: 'Ionian', label: 'Ionian' },
     { value: 'Dorian', label: 'Dorian' },
@@ -92,5 +105,12 @@ export {
     wholeToneChordTones,
     cHalfWholeDiminished,
     halfWholeDiminishedChordTones,
+    ionianExtensionNumber,
+    phrygianExtensionNumber,
+    lydianExtensionNumber,
+    aeolianExtensionNumber,
+    alteredExtensionNumber,
+    wholeToneExtensionNumber,
+    halfWholeDiminishedExtensionNumber,
     modeOptions
 }
