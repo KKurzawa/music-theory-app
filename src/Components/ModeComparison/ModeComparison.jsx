@@ -93,7 +93,6 @@ const ModeComparison = ({ props: { modeOne, modeTwo, modeOneDifferentNote, modeT
                                                                                 locrianAltered.map((string, index) => (
                                                                                     <li key={index}>{string}</li>
                                                                                 )) :
-
                                                                                 modeOne === 'Altered' && modeTwo === 'Harmonic Minor' ?
                                                                                     alteredHarmonicMinor.map((string, index) => (
                                                                                         <li key={index}>{string}</li>
