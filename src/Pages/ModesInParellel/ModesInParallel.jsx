@@ -1,6 +1,7 @@
 import './ModesInParallel.css'
 import ModeSelector from '../../Components/ModeSelector/ModeSelector'
 import ModesInParellelDisplay from '../../Components/ModesInParellelDisplay/ModesInParellelDisplay'
+import ModeComparison from '../../Components/ModeComparison/ModeComparison'
 import { useState } from 'react'
 import {
     cIonian,
@@ -339,10 +340,38 @@ const ModesInParallel = () => {
     getSeventhChordOneTones()
     getSeventhChordTwoTones()
 
+    let modeOneDifferentNote = [{ note: 'Change one or both of the modes to see them compared.' }]
+    let modeTwoDifferentNote = []
+
+    function getUnique(a, b, c, d) {
+        modeOneDifferentNote = []
+        modeTwoDifferentNote = []
+        a[1] !== b[1] ? modeOneDifferentNote.push({ note: a[1], number: c[1] }) && modeTwoDifferentNote.push({ note: b[1], number: d[1] }) : null
+        a[2] !== b[2] ? modeOneDifferentNote.push({ note: a[2], number: c[2] }) && modeTwoDifferentNote.push({ note: b[2], number: d[2] }) : null
+        a[3] !== b[3] ? modeOneDifferentNote.push({ note: a[3], number: c[3] }) && modeTwoDifferentNote.push({ note: b[3], number: d[3] }) : null
+        a[4] !== b[4] ? modeOneDifferentNote.push({ note: a[4], number: c[4] }) && modeTwoDifferentNote.push({ note: b[4], number: d[4] }) : null
+        a[5] !== b[5] ? modeOneDifferentNote.push({ note: a[5], number: c[5] }) && modeTwoDifferentNote.push({ note: b[5], number: d[5] }) : null
+        a[6] !== b[6] ? modeOneDifferentNote.push({ note: a[6], number: c[6] }) && modeTwoDifferentNote.push({ note: b[6], number: d[6] }) : null
+    }
+
+    // function alteredUnique() {
+    //     if(modeOne === 'Altered' && modeTwo === 'Ionian'){
+
+    //     } else if (modeOne === 'Altered' && modeTwo === 'Dorian'){
+
+    //     } else if (modeOne === 'Altered' && modeTwo === 'Phrygian'){
+
+    //     } 
+    // }
+
+    getUnique(modeOneToMap, modeTwoToMap, modeOneChordTonesToMap, modeTwoChordTonesToMap)
+    // alteredUnique()
+
     return (
         <main>
             <ModeSelector props={{ modeOne, setModeOne, modeTwo, setModeTwo }} />
             <ModesInParellelDisplay props={{ modeOne, modeTwo, modeOneToMap, modeTwoToMap, modeOneChordTonesToMap, modeTwoChordTonesToMap, seventhChordOne, seventhChordTwo, seventhChordOneTones, seventhChordTwoTones, chordOneName, chordTwoName, extensionsOne, extensionsTwo, extensionChordOne, extensionChordTwo, extensionNumberOne, extensionNumberTwo }} />
+            <ModeComparison props={{ modeOne, modeTwo, modeOneDifferentNote, modeTwoDifferentNote }} />
         </main>
 
     )
