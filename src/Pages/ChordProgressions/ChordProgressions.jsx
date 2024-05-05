@@ -3,6 +3,7 @@ import { useState } from 'react'
 import FunctionalHarmonySelecter from '../../Components/FunctionalHarmonySelecter/FunctionalHarmonySelecter'
 import MajorTwoFiveOne from '../../Components/MajorTwoFiveOne/MajorTwoFiveOne'
 import MinorTwoFiveOne from '../../Components/MinorTwoFiveOne/MinorTwoFiveOne'
+import MajorOneSixTwoFive from '../../Components/MajorOneSixTwoFive/MajorOneSixTwoFive'
 import {
     cMajor,
     gMajor,
@@ -93,6 +94,7 @@ const ChordProgressions = () => {
             <FunctionalHarmonySelecter props={{ sharpsFlats, setSharpsFlats, number, setNumber, majorScale, minorScale, numberOfSharpsOrFlats }} />
             <MajorTwoFiveOne props={{ majorScale, majorChords, majorRomanNumerals }} />
             <MinorTwoFiveOne props={{ minorScale, minorChords, minorRomanNumerals }} />
+            <MajorOneSixTwoFive props={{ majorScale, majorChords, majorRomanNumerals }} />
         </>
     )
 }
